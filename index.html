@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Guia interativo da galáxia Star Wars: personagens, planetas, naves, facções, linha do tempo, quiz e muito mais.">
+
+    <link rel="icon" href="assets/aba-capacete.png">
+
+    <title>Holocron | Guia da Galáxia Star Wars</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-theme="sombrio">
+
+    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
+        <div class="loading-logo">STAR <span>WARS</span></div>
+        <div class="loading-bar">
+            <div class="loading-bar-fill"></div>
+        </div>
+    </div>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ========================= HEADER ========================= -->
+    <header class="header" id="header">
+
+        <a href="#inicio" class="logo">STAR <span>WARS</span></a>
+
+        <nav class="menu" aria-label="Navegação principal">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#explorar">Explorar</a></li>
+                <li><a href="#forca">A Força</a></li>
+                <li><a href="#linha-do-tempo">História</a></li>
+                <li><a href="#mapa">Mapa</a></li>
+                <li><a href="#holocron">Holocron</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-button" id="searchShortcut" aria-label="Ir para a busca"><img src="assets/lupa.svg"
+                    alt="lupa"></button>
+            <button class="icon-button" id="favoritesShortcut" aria-label="Ver meus favoritos">
+                <img src="assets/favorite.svg" alt="coração"> <span class="favorites-count" id="favoritesCount">0</span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Alternar entre Lado Sombrio e Lado Luminoso"
+                aria-pressed="false">
+                <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+                <span class="theme-toggle-label" id="themeToggleLabel">Lado Sombrio</span>
+            </button>
+        </div>
+
+    </header>
+
+    <!-- ========================= HERO ========================= -->
+    <section id="inicio" class="hero">
+
+        <div class="hero-content">
+            <p class="hero-subtitle">HÁ MUITO TEMPO, EM UMA GALÁXIA MUITO DISTANTE...</p>
+            <h1>UM UNIVERSO <span>PARA EXPLORAR</span></h1>
+            <p class="hero-text">
+                Personagens, planetas, naves e facções de toda a saga,
+                organizados em um guia interativo. Pesquise, descubra
+                e monte seu próprio caminho pela galáxia.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#explorar" class="hero-button">EXPLORAR A GALÁXIA</a>
+                <a href="#quiz" class="hero-button hero-button--ghost">FAZER O QUIZ</a>
+            </div>
+        </div>
+
+        <a href="#explorar" class="scroll-hint" aria-label="Rolar para a próxima seção">
+            <span class="scroll-hint-line"></span> ROLE
+        </a>
+
+    </section>
+
+    <!-- ========================= CAMINHOS DE EXPLORAÇÃO ========================= -->
+    <section class="section paths-section">
+
+        <div class="section-title">
+            <span>01</span>
+            <div>
+                <p>ESCOLHA UM CAMINHO</p>
+                <h2>Explore a Galáxia</h2>
+            </div>
+        </div>
+
+        <div class="paths-grid" id="pathsGrid">
+            <!-- Renderizado via JavaScript -->
+        </div>
+
+        <div class="progress-strip">
+            <div class="progress-strip-text">
+                <span id="progressLabel">Você explorou 0% da galáxia.</span>
+                <span class="progress-strip-sub">Abra itens em "Explorar" para aumentar seu progresso.</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ========================= EXPLORAR (BUSCA + FILTROS) ========================= -->
+    <section id="explorar" class="section">
+
+        <div class="section-title">
+            <span>02</span>
+            <div>
+                <p>ENCICLOPÉDIA DA GALÁXIA</p>
+                <h2>Explorar</h2>
+            </div>
+        </div>
+
+        <div class="explorer-controls">
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Pesquisar na galáxia... (ex: Luke, Jedi, Tatooine)"
+                    aria-label="Pesquisar na galáxia">
+            </div>
+
+            <div class="filter-chips" id="filterChips" role="group" aria-label="Filtrar por categoria">
+                <button class="chip active" data-filter="todos">Todos</button>
+                <button class="chip" data-filter="personagem">Personagens</button>
+                <button class="chip" data-filter="planeta">Planetas</button>
+                <button class="chip" data-filter="nave">Naves</button>
+                <button class="chip" data-filter="faccao">Facções</button>
+                <button class="chip" data-filter="droid">Droids</button>
+                <button class="chip" data-filter="favoritos">★ Favoritos</button>
+            </div>
+
+        </div>
+
+        <p class="explorer-count" id="explorerCount"></p>
+
+        <div class="explorer-grid" id="explorerGrid">
+            <!-- Renderizado via JavaScript -->
+        </div>
+
+        <p class="explorer-empty hidden-flag" id="explorerEmpty">
+            Nada encontrado por aqui. Tente outro termo ou categoria.
+        </p>
+
+    </section>
+
+    <!-- ========================= A FORÇA ========================= -->
+    <section id="forca" class="force">
+
+        <div class="force-intro">
+            <div class="section-title">
+                <span>03</span>
+                <div>
+                    <p>O EQUILÍBRIO DO UNIVERSO</p>
+                    <h2>Lado Luminoso <span class="force-vs">vs</span> Lado Sombrio</h2>
+                </div>
+            </div>
+            <p class="force-lead">
+                A Força tem dois caminhos. Puxe o interruptor para sentir
+                o peso de cada lado — a página inteira responde à sua escolha.
+            </p>
+        </div>
+
+        <button class="force-switch" id="forceSwitch" role="switch" aria-checked="false"
+            aria-label="Alternar entre Lado Luminoso e Lado Sombrio">
+            <span class="force-switch-label force-switch-label--light">LUMINOSO</span>
+            <span class="force-switch-rail"><span class="force-switch-knob"></span></span>
+            <span class="force-switch-label force-switch-label--dark">SOMBRIO</span>
+        </button>
+
+        <div class="force-panel">
+            <article class="force-side force-side--light" data-side="luminoso">
+                <span class="force-side-eyebrow">O CAMINHO DA LUZ</span>
+                <h3>Serenidade. Sabedoria. Sacrifício.</h3>
+                <p>Guiados pela calma e pelo autocontrole, os defensores da luz buscam proteger a galáxia colocando o
+                    bem coletivo acima do próprio poder.</p>
+                <ul class="force-traits">
+                    <li>Disciplina mental</li>
+                    <li>Compaixão</li>
+                    <li>Defesa, não ataque</li>
+                </ul>
+            </article>
+
+            <article class="force-side force-side--dark" data-side="sombrio">
+                <span class="force-side-eyebrow">O CAMINHO DA SOMBRA</span>
+                <h3>Paixão. Poder. Ambição.</h3>
+                <p>Movidos pela emoção intensa e pela vontade de domínio, os que seguem a sombra acreditam que o poder
+                    verdadeiro vem de abraçar os próprios desejos, sem limites.</p>
+                <ul class="force-traits">
+                    <li>Emoção como combustível</li>
+                    <li>Ambição irrestrita</li>
+                    <li>Poder acima de tudo</li>
+                </ul>
+            </article>
+        </div>
+
+    </section>
+
+    <!-- ========================= LINHA DO TEMPO ========================= -->
+    <section id="linha-do-tempo" class="section timeline-section">
+
+        <div class="section-title">
+            <span>04</span>
+            <div>
+                <p>UMA GALÁXIA EM MOVIMENTO</p>
+                <h2>Linha do Tempo</h2>
+            </div>
+        </div>
+
+        <p class="timeline-hint">Clique em uma era para ver mais detalhes.</p>
+
+        <div class="timeline" id="timeline"></div>
+
+        <div class="timeline-detail" id="timelineDetail">
+            <span class="timeline-detail-era" id="timelineDetailEra"></span>
+            <h3 id="timelineDetailTitle"></h3>
+            <p id="timelineDetailText"></p>
+        </div>
+
+    </section>
+
+    <!-- ========================= MAPA DA GALÁXIA ========================= -->
+    <section id="mapa" class="section map-section">
+
+        <div class="section-title">
+            <span>05</span>
+            <div>
+                <p>INTERFACE HOLOGRÁFICA</p>
+                <h2>Mapa da Galáxia</h2>
+            </div>
+        </div>
+
+        <p class="map-hint">Toque em um ponto luminoso para revelar o planeta.</p>
+
+        <div class="map-wrap">
+            <svg id="galaxyMap" viewBox="0 0 800 500" role="img"
+                aria-label="Mapa estilizado da galáxia com planetas clicáveis">
+                <!-- Pontos renderizados via JavaScript -->
+            </svg>
+
+            <div class="map-detail" id="mapDetail">
+                <span class="map-detail-hint">Selecione um planeta no mapa</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ========================= HOLOCRON ========================= -->
+    <section id="holocron" class="section holocron-section">
+
+        <div class="section-title">
+            <span>06</span>
+            <div>
+                <p>ARQUIVOS CLASSIFICADOS</p>
+                <h2>Holocron</h2>
+            </div>
+        </div>
+
+        <div class="holocron-grid" id="holocronGrid"></div>
+
+    </section>
+
+    <!-- ========================= CURIOSIDADES ========================= -->
+    <section class="section trivia-section">
+
+        <div class="section-title">
+            <span>07</span>
+            <div>
+                <p>PARA OS CURIOSOS</p>
+                <h2>Você sabia?</h2>
+            </div>
+        </div>
+
+        <div class="trivia-card">
+            <p id="triviaText"></p>
+            <button class="hero-button hero-button--ghost" id="triviaButton">OUTRA CURIOSIDADE</button>
+        </div>
+
+    </section>
+
+    <!-- ========================= QUIZ ========================= -->
+    <section id="quiz" class="section quiz-section">
+
+        <div class="section-title">
+            <span>08</span>
+            <div>
+                <p>TESTE SEU CONHECIMENTO</p>
+                <h2>Quiz da Galáxia</h2>
+            </div>
+        </div>
+
+        <div class="quiz-box" id="quizBox">
+
+            <div class="quiz-progress">
+                <span id="quizProgressText">Pergunta 1 de 5</span>
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quizProgressFill"></div>
+                </div>
+            </div>
+
+            <h3 class="quiz-question" id="quizQuestion"></h3>
+
+            <div class="quiz-options" id="quizOptions"></div>
+
+            <div class="quiz-result hidden-flag" id="quizResult">
+                <h3 id="quizResultTitle"></h3>
+                <p id="quizResultText"></p>
+                <button class="hero-button" id="quizRestart">TENTAR NOVAMENTE</button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= FAVORITOS ========================= -->
+    <section id="favoritos" class="section favorites-section">
+
+        <div class="section-title">
+            <span>09</span>
+            <div>
+                <p>SUA COLEÇÃO PESSOAL</p>
+                <h2>Meus Favoritos</h2>
+            </div>
+        </div>
+
+        <div class="explorer-grid" id="favoritesGrid"></div>
+
+        <p class="explorer-empty" id="favoritesEmpty">
+            Você ainda não favoritou nada. Clique no ♡ em qualquer card de "Explorar".
+        </p>
+
+    </section>
+
+    <!-- ========================= CTA ========================= -->
+    <section class="cta">
+        <div>
+            <p>QUE A FORÇA ESTEJA COM VOCÊ</p>
+            <h2>A exploração <span>nunca termina.</span></h2>
+            <a href="#explorar" class="hero-button">VOLTAR A EXPLORAR</a>
+        </div>
+    </section>
+
+    <!-- ========================= FOOTER ========================= -->
+    <footer>
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+                <a href="#inicio" class="footer-logo">STAR <span>WARS</span></a>
+                <p>Guia interativo desenvolvido para estudos de HTML, CSS e JavaScript.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Explorar</h4>
+                <ul>
+                    <li><a href="#explorar" data-footer-filter="personagem">Personagens</a></li>
+                    <li><a href="#explorar" data-footer-filter="planeta">Planetas</a></li>
+                    <li><a href="#explorar" data-footer-filter="nave">Naves</a></li>
+                    <li><a href="#explorar" data-footer-filter="faccao">Facções</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Guia</h4>
+                <ul>
+                    <li><a href="#linha-do-tempo">Linha do Tempo</a></li>
+                    <li><a href="#mapa">Mapa da Galáxia</a></li>
+                    <li><a href="#holocron">Holocron</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Você</h4>
+                <ul>
+                    <li><a href="#favoritos">Meus Favoritos</a></li>
+                    <li><a href="#" id="footerProgressLink">Meu Progresso</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-author">
+
+            <p>Desenvolvido por <strong>Ruan Rodrigues</strong>, o gato.</p>
+
+            <div class="footer-social">
+
+                <a href="https://www.instagram.com/euu_ruan0" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/insta.png" alt="Instagram pessoal">
+                    <span>@euu_ruan0</span>
+                </a>
+
+                <a href="https://www.instagram.com/dev.ru_" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/insta.png" alt="Instagram Dev">
+                    <span>@dev.ru_</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/ruan-rodrigues-436b15306" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="assets/linkedin.png" alt="LinkedIn">
+                    <span>Ruan Rodrigues</span>
+                </a>
+
+                <a href="https://wa.me/qr/JDOVKTBCLGFDC1" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/whats.png" alt="WhatsApp">
+                    <span>WhatsApp</span>
+                </a>
+
+            </div>
+        </div>
+        <p class="copyright">© 2026 - Projeto de estudos, sem fins comerciais.</p>
+    </footer>
+
+    <!-- ========================= MODAL DE DETALHES ========================= -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fechar janela">✕</button>
+
+            <div class="modal-image-wrap">
+                <img id="modalImage" src="" alt="">
+            </div>
+
+            <span class="modal-number" id="modalType"></span>
+            <button class="modal-favorite" id="modalFavorite" aria-label="Favoritar">♡ Favoritar</button>
+
+            <h2 id="modalTitle"></h2>
+            <div class="modal-meta" id="modalMeta"></div>
+            <p id="modalText"></p>
+
+            <div class="modal-related">
+                <h4>Você também pode gostar</h4>
+                <div class="modal-related-list" id="modalRelated"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
