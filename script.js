@@ -323,7 +323,7 @@ const explorerItems = [
         sub: "Planeta Desértico",
         era: "República",
         meta: ["Região: Orla Exterior", "Dois sóis", "Escasso em água"],
-        image: "assets/tatooine.jpg",
+        image: "assets/Tatooine.jpg",
         description:
             "Um mundo árido de dois sóis, dominado por dunas intermináveis " +
             "e comunidades isoladas. Distante do controle direto de " +
