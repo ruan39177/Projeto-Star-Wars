@@ -21,10 +21,6 @@ html {
     }
 }
 
-/* =========================================================
-   VARIÁVEIS (DESIGN TOKENS)
-   ========================================================= */
-
 :root {
     --bg: #030304;
     --surface: #0c0c0f;
@@ -145,8 +141,6 @@ input {
     transform: translateY(0);
 }
 
-/* Botões reutilizáveis */
-
 .hero-button {
     display: inline-block;
     padding: 15px 30px;
@@ -175,10 +169,6 @@ input {
     background-color: var(--brand);
     color: #000;
 }
-
-/* =========================================================
-   TELA DE CARREGAMENTO / PROGRESSO DE SCROLL
-   ========================================================= */
 
 .loading-screen {
     position: fixed;
@@ -240,10 +230,6 @@ input {
     z-index: 1100;
     transition: width 0.1s linear;
 }
-
-/* =========================================================
-   HEADER
-   ========================================================= */
 
 .header {
     position: fixed;
@@ -391,10 +377,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     cursor: pointer;
 }
 
-/* =========================================================
-   HERO
-   ========================================================= */
-
 .hero {
     position: relative;
     min-height: 100vh;
@@ -498,10 +480,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     }
 }
 
-/* =========================================================
-   CAMINHOS DE EXPLORAÇÃO (HOME)
-   ========================================================= */
-
 .paths-section {
     padding-top: 100px;
 }
@@ -589,10 +567,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     transition: width 0.5s var(--ease);
 }
 
-/* =========================================================
-   EXPLORAR: BUSCA, FILTROS, GRID
-   ========================================================= */
-
 .explorer-controls {
     display: flex;
     flex-direction: column;
@@ -666,8 +640,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     color: var(--muted);
     font-size: 14px;
 }
-
-/* Card genérico usado em Explorar, Favoritos e "relacionados" */
 
 .entity-card {
     position: relative;
@@ -750,10 +722,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     border-color: var(--brand);
 }
 
-/* =========================================================
-   CONTEÚDO EM DUAS COLUNAS (reaproveitado em algumas seções)
-   ========================================================= */
-
 .content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -786,10 +754,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
 .content-image:hover img {
     transform: scale(1.05);
 }
-
-/* =========================================================
-   A FORÇA — SEÇÃO-ASSINATURA (LUZ VS SOMBRA)
-   ========================================================= */
 
 .force {
     padding: 130px 7%;
@@ -955,10 +919,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     opacity: 0.55;
 }
 
-/* =========================================================
-   LINHA DO TEMPO
-   ========================================================= */
-
 .timeline-hint {
     margin-top: -30px;
     margin-bottom: 50px;
@@ -1036,10 +996,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     color: #999;
     max-width: 640px;
 }
-
-/* =========================================================
-   MAPA DA GALÁXIA
-   ========================================================= */
 
 .map-hint {
     margin-top: -30px;
@@ -1133,10 +1089,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     align-self: flex-start;
 }
 
-/* =========================================================
-   HOLOCRON
-   ========================================================= */
-
 .holocron-section {
     background: linear-gradient(180deg, #050506, #020203);
 }
@@ -1194,10 +1146,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     color: var(--brand);
 }
 
-/* =========================================================
-   CURIOSIDADES
-   ========================================================= */
-
 .trivia-card {
     padding: 50px;
     background: var(--surface);
@@ -1212,10 +1160,6 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     margin-bottom: 28px;
     max-width: 700px;
 }
-
-/* =========================================================
-   QUIZ
-   ========================================================= */
 
 .quiz-box {
     max-width: 700px;
@@ -1297,18 +1241,10 @@ body[data-theme="luminoso"] .theme-toggle-thumb {
     margin-bottom: 26px;
 }
 
-/* =========================================================
-   FAVORITOS
-   ========================================================= */
-
 .favorites-section .explorer-empty {
     margin-top: 0;
     text-align: left;
 }
-
-/* =========================================================
-   CTA / FOOTER
-   ========================================================= */
 
 .cta {
     padding: 120px 7%;
@@ -1396,10 +1332,6 @@ footer {
     padding-top: 30px;
 }
 
-/* =========================================================
-   BOTÃO VOLTAR AO TOPO
-   ========================================================= */
-
 .top-button {
     position: fixed;
     right: 25px;
@@ -1428,10 +1360,6 @@ footer {
     background-color: var(--brand);
     color: #000;
 }
-
-/* =========================================================
-   MODAL DE DETALHES
-   ========================================================= */
 
 .modal {
     position: fixed;
@@ -1579,10 +1507,6 @@ footer {
 .modal-close:hover {
     color: var(--brand);
 }
-
-/* =========================================================
-   RESPONSIVIDADE
-   ========================================================= */
 
 @media (max-width: 1100px) {
     .paths-grid {
@@ -1768,6 +1692,7 @@ footer {
     height: 22px;
     object-fit: contain;
 }
+
 
 .footer-social a:hover {
     color: #89f5fd;
